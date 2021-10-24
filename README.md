@@ -1,4 +1,6 @@
-# servidor-dados
+# compdist-servidor-dados
+
+Nesse repositório se encontra o código do Servidor de Dados do projeto "Banco Distribuído com Webservices" da disciplina de Computação de Distribuída.
 
 ## Tokens de Autorização
 
