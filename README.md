@@ -56,7 +56,7 @@ Ocorre quando a operação de alteração de saldo ainda está sendo realizada p
 
 ### `PUT /conta/<conta>/saldo/<valor>`
 
-Altera o saldo da conta informada. Esse processo demora x segundos para ocorrer, onde x é igual ao resultado de <valor>/100. Durante o processo de alteração do saldo a conta fica em estado de lock.
+Altera o saldo da conta informada. Esse processo demora x segundos para ocorrer, onde x é igual ao resultado de `<valor>/100`. Durante o processo de alteração do saldo a conta fica em estado de lock.
 
 Request headers:
 
