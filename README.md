@@ -12,7 +12,7 @@ Cada Servidor de Negócio precisa informar o seu próprio `auth_token` no header
 
 ## Endpoints
 
-### `GET /conta/<conta>/saldo`
+### `GET /conta/<conta_id>/saldo`
 
 Retorna o saldo atual da conta informada.
 
@@ -39,11 +39,21 @@ Ocorre se o header Authorization não for informado ou for informado com um valo
 
 ```
 {
-  "codigo_erro": "NAO_AUTORIZADO",     # código de erro
+  "codigo_erro": "NAO_AUTORIZADO"      # código de erro
 }
 ```
 
-* Falha por causa de lock (status code: 423)
+3. Falha porque a conta não existe (status code: 404)
+
+Ocorre quando não existe uma conta com o conta_id informado.
+
+```
+{
+  "codigo_erro": "CONTA_INEXISTENTE"   # código de erro
+}
+```
+
+4. Falha por causa de lock (status code: 423)
 
 Ocorre quando a operação de alteração de saldo ainda está sendo realizada por algum Servidor de Negócio.
 
@@ -54,7 +64,7 @@ Ocorre quando a operação de alteração de saldo ainda está sendo realizada p
 }
 ```
 
-### `PUT /conta/<conta>/saldo/<valor>`
+### `PUT /conta/<conta_id>/saldo/<valor>`
 
 Altera o saldo da conta informada. Esse processo demora x segundos para ocorrer, onde x é igual ao resultado de `<valor>/100`. Durante o processo de alteração do saldo a conta fica em estado de lock.
 
@@ -81,11 +91,21 @@ Ocorre se o header Authorization não for informado ou for informado com um valo
 
 ```
 {
-  "codigo_erro": "NAO_AUTORIZADO",     # código de erro
+  "codigo_erro": "NAO_AUTORIZADO"      # código de erro
 }
 ```
 
-* Falha por causa de lock (status code: 423)
+3. Falha porque a conta não existe (status code: 404)
+
+Ocorre quando não existe uma conta com o conta_id informado.
+
+```
+{
+  "codigo_erro": "CONTA_INEXISTENTE"   # código de erro
+}
+```
+
+4. Falha por causa de lock (status code: 423)
 
 Ocorre quando a operação de alteração de saldo ainda está sendo realizada por algum Servidor de Negócio.
 
