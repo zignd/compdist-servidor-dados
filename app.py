@@ -1,11 +1,18 @@
 import time
 from flask import Flask, request, abort
+import logging
 
 app = Flask(__name__)
 
+logging.basicConfig(level=logging.DEBUG, format=f'%(asctime)s [%(levelname)s] %(message)s',
+                    handlers=[
+                        logging.FileHandler('record.log', mode='w'),
+                        logging.StreamHandler()
+                    ])
+
 db = {
     'contas': [
-        {'id': 1, 'saldo': 2500, 'is_locked': False, 'locked_by': None},
+        {'id': 1, 'saldo': 150, 'is_locked': False, 'locked_by': None},
         {'id': 2, 'saldo': 0, 'is_locked': False, 'locked_by': None},
         {'id': 3, 'saldo': 4800000, 'is_locked': False, 'locked_by': None},
         {'id': 4, 'saldo': 100, 'is_locked': True, 'locked_by': 3},
@@ -70,6 +77,9 @@ def get_saldo(conta_id):
     if conta['is_locked']:
         raise_locked(conta['locked_by'])
 
+    app.logger.debug('Retornando o saldo atual da conta {}'.format(
+        {'conta': conta['id'], 'saldo': conta['saldo']}))
+
     return {
         'conta': conta['id'],
         'saldo': conta['saldo'],
@@ -98,13 +108,19 @@ def set_saldo(conta_id, valor):
     conta['is_locked'] = True
     conta['locked_by'] = serv_negocio_id
 
+    app.logger.debug('Realizando operação de alteração de saldo da conta {}'.format(
+        {'conta': conta['id']}))
+
     # Simulando uma operação demorada
-    time.sleep(valor/100)
+    time.sleep(valor//100)
 
     conta['is_locked'] = False
     conta['locked_by'] = None
 
     conta['saldo'] = valor
+
+    app.logger.debug('Saldo da conta atualizado {}'.format(
+        {'conta': conta['id'], 'saldo': conta['saldo']}))
 
     return {
         'conta': conta['id'],
