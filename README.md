@@ -1,6 +1,6 @@
 # compdist-servidor-dados
 
-Nesse repositório se encontra o código do Servidor de Dados do projeto "Banco Distribuído com Webservices" da disciplina de Computação de Distribuída.
+Nesse repositório se encontra o código do Servidor de Dados do projeto "Banco Distribuído com Webservices" da disciplina de Computação de Distribuída. Utilizado em conjunto com o Servidor de Negócios que se encontra [nesse outro repositório](https://github.com/babieste/compdist-servidor-negocios).
 
 ## Tokens de Autorização
 
