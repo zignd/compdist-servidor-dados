@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 logging.basicConfig(level=logging.DEBUG, format=f'%(asctime)s [%(levelname)s] %(message)s',
                     handlers=[
-                        logging.FileHandler('record.log', mode='w'),
+                        logging.FileHandler('logs/record.log', mode='w'),
                         logging.StreamHandler()
                     ])
 
