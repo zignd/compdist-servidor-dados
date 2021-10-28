@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  servidor-dados:
+    build: .
+    ports:
+      - "5000:5000"
+    networks:
+      - servidores
+networks:
+  servidores:
+    name: servidores
+    driver: bridge
