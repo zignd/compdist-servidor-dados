@@ -112,7 +112,7 @@ def set_saldo(conta_id, valor):
         {'conta': conta['id']}))
 
     # Simulando uma operação demorada
-    time.sleep(valor//100)
+    time.sleep(5)
 
     conta['is_locked'] = False
     conta['locked_by'] = None
