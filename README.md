@@ -117,3 +117,28 @@ Ocorre quando a operação de alteração de saldo ainda está sendo realizada p
   "responsavel": 2                     # id do servidor de negócio que lockou a conta
 }
 ```
+
+### `POST /conta`
+
+Cria uma nova conta de usuário com o saldo inicial informado.
+
+Request body:
+
+```
+{
+    "saldo": 100
+}
+```
+
+Responses:
+
+1. Sucesso (status code: 200)
+```
+{
+    "conta": 1,
+    "is_locked": false,
+    "locked_by": null,
+    "saldo": 100,
+    "token": "503145c0-0f69-47d0-a95f-e6c14b0c1a09"
+}
+```

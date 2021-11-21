@@ -130,7 +130,7 @@ def set_saldo(conta_id, valor):
 @app.post('/conta')
 def post_conta():
     body = request.get_json()
-    saldo_inicial_desejado = body['saldo']
+    saldo_inicial_desejado = int(body['saldo'])
     if len(db['contas']) == 0:
         id = 1
     else:
